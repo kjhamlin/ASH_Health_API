@@ -12,4 +12,9 @@ public class DoctorService : IDoctorService
     {
         return _doctorRepository.GetDoctorById(doctorId);
     }
+
+    public IEnumerable<Doctor> GetDoctorsBySpecialty(int SpecialtyID)
+    {
+        return _doctorRepository.GetDoctorsBySpecialty(SpecialtyID);
+    }
 }

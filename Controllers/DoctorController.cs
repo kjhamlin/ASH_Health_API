@@ -20,4 +20,10 @@ public class DoctorController : ControllerBase
     {
         return _doctorService.GetDoctorById(doctorId);
     }
+
+    [HttpGet(Name = "GetDoctorsBySpecialty")]
+    public IEnumerable<Doctor> GetDoctorsBySpecialty(int specialtyID)
+    {
+        return _doctorService.GetDoctorsBySpecialty(specialtyID);
+    }
 }

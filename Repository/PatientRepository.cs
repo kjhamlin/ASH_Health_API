@@ -1,12 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace ASH_HEALTH_API;
-
 public class PatientRepository : IPatientRepository
 {
-    private readonly DbContext dbContext;
-    public PatientRepository(DbContext _dbContext)
+    private readonly DbContext _dbContext;
+    public PatientRepository(DbContext dbContext)
     {
-        dbContext = _dbContext;
+        _dbContext = dbContext;
+    }
+
+    public Patient GetPatient(Guid patientId)
+    {
+        var result = _dbContext.Patients.Where(row => row.PatientId == patientId).First();
+        return result;
     }
 }

@@ -2,9 +2,14 @@ namespace ASH_HEALTH_API;
 
 public class PatientService : IPatientService
 {
-    private readonly IPatientRepository patientRepository;
-    public PatientService(IPatientRepository _patientRepository)
+    private readonly IPatientRepository _patientRepository;
+    public PatientService(IPatientRepository patientRepository)
     {
-        patientRepository = _patientRepository;
+        _patientRepository = patientRepository;
+    }
+
+    public Patient GetPatientById(Guid patientId)
+    {
+        return _patientRepository.GetPatient(patientId);
     }
 }

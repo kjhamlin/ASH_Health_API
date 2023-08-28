@@ -6,21 +6,18 @@ namespace ASH_HEALTH_API.Controllers;
 [Route("[controller]")]
 public class PatientController : ControllerBase
 {
-    // private static readonly string[] Summaries = new[]
-    // {
-    //     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    // };
-
     private readonly ILogger<PatientController> _logger;
+    private readonly IPatientService _patientService;
 
-    public PatientController(ILogger<PatientController> logger)
+    public PatientController(ILogger<PatientController> logger, IPatientService patientService)
     {
         _logger = logger;
+        _patientService = patientService;
     }
 
-    [HttpGet(Name = "")]
-    public IEnumerable<Patient> GetPatient()
+    [HttpGet(Name = "GetPatient")]
+    public Patient GetPatient(Guid patientId)
     {
-        throw new NotImplementedException();
+        return _patientService.GetPatientById(patientId);
     }
 }

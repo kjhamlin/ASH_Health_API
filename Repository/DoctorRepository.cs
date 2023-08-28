@@ -18,7 +18,7 @@ public class DoctorRepository : IDoctorRepository
 
     public IEnumerable<Doctor> GetDoctorsBySpecialty(int SpecialtyID)
     {
-        var result = _dbContext.Doctors.Where(RowNotInTableException => row.SpecialtyID == SpecialtyID);
+        var result = _dbContext.Doctors.Where(row => row.SpecialtyID == SpecialtyID);
         return result;
     }
 }

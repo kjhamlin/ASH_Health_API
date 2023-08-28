@@ -14,4 +14,10 @@ public class PatientRepository : IPatientRepository
         var result = _dbContext.Patients.Where(row => row.PatientId == patientId).First();
         return result;
     }
+
+    public void AddPatient(Patient patient)
+    {
+        _dbContext.Add(patient);
+        _dbContext.SaveChanges();
+    }
 }

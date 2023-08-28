@@ -8,6 +8,11 @@ public class PatientService : IPatientService
         _patientRepository = patientRepository;
     }
 
+    public void AddPatient(Patient patient)
+    {
+        _patientRepository.AddPatient(patient);
+    }
+
     public Patient GetPatientById(Guid patientId)
     {
         return _patientRepository.GetPatient(patientId);

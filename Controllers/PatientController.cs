@@ -20,4 +20,20 @@ public class PatientController : ControllerBase
     {
         return _patientService.GetPatientById(patientId);
     }
+
+    [HttpPut(Name = "AddPatient")]
+    public IActionResult AddPatient(Patient patient)
+    {
+        try
+        {
+            _patientService.AddPatient(patient);
+        }
+        catch (Exception e)
+        {
+            _logger.Log(e);
+            return StatusCode(500);
+        }
+
+        return Ok();
+    }
 }
